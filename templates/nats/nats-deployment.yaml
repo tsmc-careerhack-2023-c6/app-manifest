@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nats
+spec:
+  replicas: 1
+  strategy: {}
+  selector:
+    matchLabels:
+      app: nats
+  template:
+    metadata:
+      labels:
+        app: nats
+    spec:
+      containers:
+        - name: nats
+          image: nats:2.9.14-alpine
+          ports:
+            - containerPort: 4222
+          #  - containerPort: 8222
+          #    hostPort: 8222
+      tolerations:
+      - key: "app"
+        operator: "Equal"
+        value: "business2"
+        effect: "NoSchedule"

@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: business-2
+spec:
+  tolerations:
+  - key: "app"
+    operator: "Equal"
+    value: "business2"
+    effect: "NoSchedule"
+  containers:
+  - name: business
+    image: wst24365888/tsmc-careerhack-2023-c6-business-app
+    ports:
+      - containerPort: 8100
+        hostPort: {{ .Values.app.business.hostPort }}
+    env:
+    - name: DATABASE_URL
+      value: postgres://admin:tsmchackathon@{{ .Values.app.business.dbUrl }}/careerhack
+    - name: INVENTORY_URL
+      value: http://{{ .Values.app.business.inventoryUrl }}/api/inventory
+    - name: NATS_URL
+      value: nats://{{ .Values.app.business.natsUrl }}
+    - name: NATS_TOPIC_PREFIX
+      value: "business2"

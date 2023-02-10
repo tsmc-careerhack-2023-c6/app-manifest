@@ -1,0 +1,11 @@
+app:
+  business:
+    hostPort: 8100
+    dbUrl: "10.0.0.6:8300"
+    inventoryUrl: "10.0.0.7:8200"
+    natsUrl: "nats-svc:4222"
+  inventory:
+    hostPort: 8200
+  postgres:
+    hostPort: 8300
+  
