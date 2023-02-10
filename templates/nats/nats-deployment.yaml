@@ -18,8 +18,8 @@ spec:
           image: nats:2.9.14-alpine
           ports:
             - containerPort: 4222
-          #  - containerPort: 8222
-          #    hostPort: 8222
+            - containerPort: 8222
+              hostPort: 8222
       tolerations:
       - key: "app"
         operator: "Equal"
